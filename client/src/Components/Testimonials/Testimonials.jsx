@@ -11,7 +11,7 @@ import {
   cardImgStyles,
   cardsCommonStyles,
   focusCardStyles,
-} from "../../assets/component data/ContributersData";
+} from "./ContributersData";
 
 const Carousel = () => {
   const [first, setFirst] = useState(0);
@@ -19,15 +19,15 @@ const Carousel = () => {
 
   const handleNext = () => {
     setTransitionState(transitionState == 2 ? 0 : transitionState + 1);
-      setFirst(first == items.length - 1 ? 0 : first + 1);
+    setFirst(first == items.length - 1 ? 0 : first + 1);
   };
 
   const handlePrev = () => {
     setTransitionState(transitionState == 0 ? 2 : transitionState - 1);
-      setFirst(first == 0 ? items.length - 1 : first - 1);
+    setFirst(first == 0 ? items.length - 1 : first - 1);
   };
   return (
-    <div className="testimonialSection pt-40 px-4">
+    <div id="about us" className="testimonialSection pt-40 px-4">
       <h1 className="lg:text-5xl md:text-3xl  font-bold text-center mb-20 text-xl sm:text-2xl">
         OUR HAPPY CONTRIBUTERS
       </h1>
@@ -42,18 +42,26 @@ const Carousel = () => {
                 : aboveCardStyles
             }`}
           >
-            <div className={cardHeadingStyles}>
-              {transitionState == 2 ? items[first].title : ""}{" "}
-              <img
-                src={transitionState == 2 ? items[first].img : ""}
-                alt={
-                  transitionState == 2 ? items[first].title : "" + "'s image"
-                }
-                className={cardImgStyles}
-              />
-            </div>
-            <div className={cardDescriptionStyles}>
-              {transitionState == 2 ? items[first].description : ""}
+            <img
+              src={transitionState == 2 ? items[first].img : ""}
+              alt={transitionState == 2 ? items[first].title : "" + "'s image"}
+              className={
+                cardImgStyles + ` ${transitionState == 2 ? "" : "opacity-0"}`
+              }
+            />
+            <div
+              className="p-4 pt-10 px-20 w-full h-full bg-[#0D0E20] overflow-hidden ctaBtn rounded-xl sm:h-[290px] min-h-[290px]"
+              style={{
+                boxShadow: "0 0 29px -1px rgba(0, 0, 0, 0.19)",
+                border: "3px solid rgba(255, 255, 255, 0.2)",
+              }}
+            >
+              <div className={cardHeadingStyles}>
+                {transitionState == 2 ? items[first].title : ""}{" "}
+              </div>
+              <div className={cardDescriptionStyles}>
+                {transitionState == 2 ? items[first].description : ""}
+              </div>
             </div>
           </div>
           <div
@@ -65,18 +73,26 @@ const Carousel = () => {
                 : aboveCardStyles
             }`}
           >
-            <div className={cardHeadingStyles}>
-              {transitionState == 0 ? items[first].title : ""}
-              <img
-                src={transitionState == 0 ? items[first].img : ""}
-                alt={
-                  transitionState == 0 ? items[first].title : "" + "'s image"
-                }
-                className={cardImgStyles}
-              />
-            </div>
-            <div className={cardDescriptionStyles}>
-              {transitionState == 0 ? items[first].description : ""}
+            <img
+              src={transitionState == 0 ? items[first].img : ""}
+              alt={transitionState == 0 ? items[first].title : "" + "'s image"}
+              className={
+                cardImgStyles + ` ${transitionState == 0 ? "" : "opacity-0"}`
+              }
+            />
+            <div
+              className="p-4 pt-10 px-20 w-full h-full bg-[#0D0E20] overflow-hidden ctaBtn rounded-xl sm:h-[290px] min-h-[290px]"
+              style={{
+                boxShadow: "0 0 29px -1px rgba(0, 0, 0, 0.19)",
+                border: "3px solid rgba(255, 255, 255, 0.2)",
+              }}
+            >
+              <div className={cardHeadingStyles}>
+                {transitionState == 0 ? items[first].title : ""}
+              </div>
+              <div className={cardDescriptionStyles}>
+                {transitionState == 0 ? items[first].description : ""}
+              </div>
             </div>
           </div>
           <div
@@ -88,18 +104,26 @@ const Carousel = () => {
                 : aboveCardStyles
             }`}
           >
-            <div className={cardHeadingStyles}>
-              {transitionState == 1 ? items[first].title : ""}
-              <img
-                src={transitionState == 1 ? items[first].img : ""}
-                alt={
-                  transitionState == 1 ? items[first].title : "" + "'s image"
-                }
-                className={cardImgStyles}
-              />
-            </div>
-            <div className={cardDescriptionStyles}>
-              {transitionState == 1 ? items[first].description : ""}
+            <img
+              src={transitionState == 1 ? items[first].img : ""}
+              alt={transitionState == 1 ? items[first].title : "" + "'s image"}
+              className={
+                cardImgStyles + ` ${transitionState == 1 ? "" : "opacity-0"}`
+              }
+            />
+            <div
+              className="p-4 pt-10 px-20 w-full h-full rounded-xl bg-[#0D0E20] overflow-hidden ctaBtn sm:h-[290px] min-h-[290px]"
+              style={{
+                boxShadow: "0 0 29px -1px rgba(0, 0, 0, 0.19)",
+                border: "3px solid rgba(255, 255, 255, 0.2)",
+              }}
+            >
+              <div className={cardHeadingStyles}>
+                {transitionState == 1 ? items[first].title : ""}
+              </div>
+              <div className={cardDescriptionStyles}>
+                {transitionState == 1 ? items[first].description : ""}
+              </div>
             </div>
           </div>
           <button
@@ -112,7 +136,7 @@ const Carousel = () => {
           >
             <MdPlayArrow
               size="3rem"
-              className="bg-gray-600 m-[2px] p-[14px] rounded-xl hover:bg-[#66bee3] transition-colors duration-500"
+              className="bg-[#0D0E20] m-[2px] p-[14px] rounded-xl hover:bg-[#66bee3] transition-colors duration-500 rotate-180"
               style={{
                 clipPath:
                   "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
@@ -129,7 +153,7 @@ const Carousel = () => {
           >
             <MdPlayArrow
               size="3rem"
-              className="bg-gray-600 m-[2px] p-[14px] hover:bg-[#66bee3] transition-colors duration-500"
+              className="bg-[#0D0E20] m-[2px] p-[14px] hover:bg-[#66bee3] transition-colors duration-500"
               style={{
                 clipPath:
                   "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
@@ -148,6 +172,7 @@ const Carousel = () => {
                   "border-2 border-[#66bee3] rounded-full w-full " +
                   `${index == first ? "bg-[#66bee3]" : "transparent"}`
                 }
+                style={{boxShadow: index === first ? "0 0 10px 2px #66bee3" : ""}}
               />
             );
           })}

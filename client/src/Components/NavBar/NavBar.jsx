@@ -1,26 +1,9 @@
 import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-
 import logo from "../../../public/Icons/Logo.png";
 import HamMenu from "../../../public/Icons/iconsmenu.png";
-import GradientBtn from "../Gradient Btn/GradientBtn";
-import LoginButton from "../Gradient Btn/LoginButton";
-import LogoutButton from "../Gradient Btn/LogoutButton";
-function Navbar() {
-  const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
-  console.log(isAuthenticated);
-  if (isAuthenticated) {
-    console.log(user);
-    console.log(isAuthenticated);
-    const response = fetch("https://devauction.onrender.com/auth", {
-      method: "POST",
-      body: JSON.stringify(user),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    });
-  }
+import GradientBtn from "../Buttons/GradientBtn";
 
+function Navbar({ loginWithRedirect }) {
   const smoothScroll = (target, duration) => {
     const targetPosition = target.getBoundingClientRect().top;
     console.log(targetPosition);
@@ -61,58 +44,29 @@ function Navbar() {
     }
   }
 
+  // Array for the nav links
+  const NavLinks = ["Home", "How it Works", "Features", "About Us", "Contact Us"]
+  
   return (
     <>
       <nav className="flex justify-between items-center w-full px-5 bg-[#050618] fixed z-[1000]">
+        {/* <div className="relative top-0"> X</div> */}
         <div>
           <img src={logo} alt="" className="w-16" />
         </div>
         <ul className="hidden gap-7 text-white md:flex font-thin">
-          <li>
+          {NavLinks.map((elem) => (
+            <li>
             <a
-              href="#home"
+              href={"#" + elem.toLocaleLowerCase()}
               className=" hover:text-[#23DD9F] cursor-pointer hover:underline"
               onClick={scrollInToView}
             >
-              Home
+              {elem}
             </a>
           </li>
-          <li>
-            <a
-              href="#steps"
-              className=" hover:text-[#23DD9F] cursor-pointer hover:underline"
-              onClick={scrollInToView}
-            >
-              How it works
-            </a>
-          </li>
-          <li>
-            <a
-              href="#feature"
-              className=" hover:text-[#23DD9F] cursor-pointer hover:underline"
-              onClick={scrollInToView}
-            >
-              Features
-            </a>
-          </li>
-          <li>
-            <a
-              href="#mission"
-              className=" hover:text-[#23DD9F] cursor-pointer hover:underline"
-              onClick={scrollInToView}
-            >
-              About Us
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              className=" hover:text-[#23DD9F] cursor-pointer hover:underline"
-              onClick={scrollInToView}
-            >
-              Contact Us
-            </a>
-          </li>
+          ))}
+          
         </ul>
 
         <div className="flex">
@@ -121,7 +75,7 @@ function Navbar() {
             onClick={() => loginWithRedirect()}
             className={"text-white"}
           />
-          <img className="block md:hidden w-10 mx-4" src={HamMenu} alt="" />
+          {/* <img className="block md:hidden w-10 mx-4" src={HamMenu} alt="" /> */}
         </div>
       </nav>
     </>
