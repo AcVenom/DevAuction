@@ -10,7 +10,7 @@ const cerateRoomSchema = new mongoose.Schema({
         type : String,
         required : false
     },
-    Premium : {
+    Status : {
         type : Boolean,
         required : true
     },
@@ -26,19 +26,11 @@ const cerateRoomSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    Topic : {
-        type : [String],
-        required : false
-    },
     FileID : {
         type : String,
         required : true,
     },
     RoomID : {
-        type : String,
-        required : true
-    },
-    RoomSecret : {
         type : String,
         required : true
     },

@@ -8,37 +8,45 @@ router.post('/getProject', async (req,res)=>{
 })
 
 router.post('/offers', async (req, res) => {
-    const { projectID, email, offer } = req.body
+    const projectID = req.body.projectID
+    const email = req.body.email
+    const offer = Number(req.body.offer)
+    console.log(projectID,email,offer)
   
     try {
-        const project = await Project.findOneAndUpdate({ ProjectID: projectID },{
-            $push : {"Offers" : {
-                email : email,
-                amount : offer,
-                results : 0
-            }}
-        })
-    
+        const project = await Project.findOne({ ProjectID: projectID })
+
         if (!project) {
             return res.status(404).send('Project not found')
         }
 
-        await project.save()
+        if(offer >= project.OfferPrice){
+            project.Offers.push({
+                email : email,
+                amount : offer,
+                results : 0
+            }) 
+            await project.save()
 
-        // logic to add data inside user spendings
-        const user = await User.findOneAndUpdate({"UserInfo.email" : email},{
-            $inc : {"Profile.Credits" : -offer},
-            $push : {"Profile.Spendings" : {Category : "Offer", Amount : offer}}
-        })
+            // logic to add data inside user spendings
+            const user = await User.findOneAndUpdate({"UserInfo.email" : email},{
+                $inc : {"Profile.Credits" : -offer*100},
+                $push : {"Profile.Spendings" : {Category : "Offer", Amount : offer}}
+            })
 
-        if(!user)
-        {
-            res.status(500).json({message : "User Not found"})
+            if(!user)
+            {
+                res.status(500).json({message : "User Not found"})
+            }
+
+            await user.save()
+        
+            res.status(201).send('Offer placed successfully')
+        }
+        else{
+            res.status(500).send("Amount should be greater than offer price")
         }
 
-        await user.save()
-    
-        res.status(201).send('Bid placed successfully')
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error')
@@ -66,29 +74,5 @@ router.post("/earnings", async (req,res)=>{
     }
 })
 
-router.post("/follow", async (req,res)=>{
-    const {from, to} = req.body
-
-    try {
-        const fromUser = await User.findOne({"UserInfo.email" : email},{
-            $push : {"Profile.Following" : to}
-        })
-
-        const toUser = await User.findOne({"UserInfo.email" : email},{
-            $push : {"Profile.Followers" : from}
-        })
-
-        if(!fromUser || !toUser){
-            res.status(500).json({message : "User Not found"})
-        }
-
-        await fromUser.save()
-        await toUser.save()
-        res.status(201).send("followers/following updated successfully")
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error')
-    }
-})
 
 module.exports = router

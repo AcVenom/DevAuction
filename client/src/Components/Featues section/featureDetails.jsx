@@ -4,14 +4,14 @@ import { RxUpdate } from "react-icons/rx";
 import { FaCode } from "react-icons/fa6";
 import { RiUserVoiceLine } from "react-icons/ri";
 import { PiFileVideo } from "react-icons/pi";
-import { IoStarHalf } from "react-icons/io5";
+import { FaUserFriends } from "react-icons/fa";
 
 const FeatureDetails = [
   {
     icon: <GiHourglass size="2.5rem" />,
-    heading: "Auction Rooms with Timer",
+    heading: "Auction Rooms",
     description:
-      "Real-time bidding with a countdown timer ensures competitive pricing.",
+      "Real-time bidding with a video and chat for competitive pricing.",
   },
   {
     icon: <GiTakeMyMoney size="2.5rem" />,
@@ -42,9 +42,9 @@ const FeatureDetails = [
       "View short videos of projects and buy the source code or hire the creator instantly.",
   },
   {
-    icon: <IoStarHalf size="2.5rem" />,
-    heading: "Review and Rating System",
-    description: "Rate and review sellers for better transparency and trust.",
+    icon: <FaUserFriends size="2.5rem" />,
+    heading: "Meaningful Connections",
+    description: "View Projects They Made to Foster Genuine Relationships.",
   },
 ];
 
