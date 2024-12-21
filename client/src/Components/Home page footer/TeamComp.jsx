@@ -1,51 +1,53 @@
 import React from "react";
 import jitesh from "../../assets/LandingPage Images/Screenshot_20240131-162512.jpg"
-import Ankit from "../../assets/LandingPage Images/WhatsApp Image 2024-06-15 at 22.24.32.jpeg"
-import Nitish from "../../assets/LandingPage Images/nitieshbhai.jpeg"
-import Aakash from "../../assets/LandingPage Images/Snapchat-881403884.jpg"
+
 import Katole from "../../assets/LandingPage Images/Katole.jpeg"
-import Kanishka1 from "../../assets/LandingPage Images/kanis1.jpeg"
-import Kanishka2 from "../../assets/LandingPage Images/kanis2.jpeg"
-import Khushi from "../../assets/LandingPage Images/khushi2.jpeg"
+import Gajendra from "../../assets/LandingPage Images/Gajendra.jpeg"
+
   
 function TeamComp() {
   // 
   const data = [
-    {
-      url: Ankit,
-      name: "Ankit Chauhan",
-      desc: "Frontend Developer"
-    },
+    // {
+    //   url: Ankit,
+    //   name: "Ankit Chauhan",
+    //   desc: "Frontend Developer"
+    // },
     {
       url: jitesh,
       name: "Jitesh Varade",
-      desc: "Founder"
-    },
-    {
-      url: Nitish,
-      name: "Nitish Kumar",
       desc: "Full stack Developer"
     },
+    // {
+    //   url: Nitish,
+    //   name: "Nitish Kumar",
+    //   desc: "Full stack Developer"
+    // },
+    // {
+    //   url: Kanishka1,
+    //   name: "Kanishka",
+    //   desc: "UI/UX Designer"
+    // },
+    // {
+    //   url: Khushi,
+    //   name: "Khushi",
+    //   desc: "UI/UX Designer"
+    // },
     {
-      url: Kanishka1,
-      name: "Kanishka",
-      desc: "UI/UX Designer"
-    },
-    {
-      url: Khushi,
-      name: "Khushi",
-      desc: "UI/UX Designer"
+      url: Gajendra,
+      name: "Gajendra Naphade",
+      desc: "Frontend Developer"
     },
     {
       url: Katole,
       name: "Ankit Katole",
       desc: "Backend Developer"
     },
-    {
-      url: Aakash,
-      name: "Aakash Kaushik",
-      desc: "Frontend Developer"
-    },
+    // {
+    //   url: Aakash,
+    //   name: "Aakash Kaushik",
+    //   desc: "Frontend Developer"
+    // },
   ];
 
   return (
