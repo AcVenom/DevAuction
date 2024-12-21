@@ -8,31 +8,13 @@ import Gajendra from "../../assets/LandingPage Images/Gajendra.jpeg"
 function TeamComp() {
   // 
   const data = [
-    // {
-    //   url: Ankit,
-    //   name: "Ankit Chauhan",
-    //   desc: "Frontend Developer"
-    // },
+    
     {
       url: jitesh,
       name: "Jitesh Varade",
       desc: "Full stack Developer"
     },
-    // {
-    //   url: Nitish,
-    //   name: "Nitish Kumar",
-    //   desc: "Full stack Developer"
-    // },
-    // {
-    //   url: Kanishka1,
-    //   name: "Kanishka",
-    //   desc: "UI/UX Designer"
-    // },
-    // {
-    //   url: Khushi,
-    //   name: "Khushi",
-    //   desc: "UI/UX Designer"
-    // },
+    
     {
       url: Gajendra,
       name: "Gajendra Naphade",
@@ -43,11 +25,7 @@ function TeamComp() {
       name: "Ankit Katole",
       desc: "Backend Developer"
     },
-    // {
-    //   url: Aakash,
-    //   name: "Aakash Kaushik",
-    //   desc: "Frontend Developer"
-    // },
+  
   ];
 
   return (
